@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Quiz Droid</string>
+    <string name="topic_title">topicTitle</string>
+    <string-array name="topicsArray">
+        <item>Math</item>
+        <item>Biology</item>
+        <item>History</item>
+        <item>Economics</item>
+        <item>Computer Science</item>
+        <item>Physics</item>
+        <item>Japanese</item>
+        <item>Spanish</item>
+        <item>Linguistics</item>
+    </string-array>
 </resources>
