@@ -12,4 +12,15 @@
         <item>Spanish</item>
         <item>Linguistics</item>
     </string-array>
+    <string-array name="descriptorArray">
+        <item>Mathematics is a subject that deals with numbers, shapes, logic, quantity and arrangements. Mathematics teaches to solve problems based on numerical calculations and find the solutions</item>
+        <item>Biology</item>
+        <item>History</item>
+        <item>Economics</item>
+        <item>Computer Science</item>
+        <item>Physics</item>
+        <item>Japanese</item>
+        <item>Spanish</item>
+        <item>Linguistics</item>
+    </string-array>
 </resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QuestionActivity">
+
+    <TextView
+        android:id="@+id/Question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question" />
+
+    <RadioGroup
+        android:id="@+id/answerGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/Answer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 1" />
+
+        <RadioButton
+            android:id="@+id/Answer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 2" />
+
+        <RadioButton
+            android:id="@+id/Answer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 3" />
+
+        <RadioButton
+            android:id="@+id/Answer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Question 4" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:text="Submit" />
+
+</LinearLayout>
