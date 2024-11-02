@@ -34,11 +34,13 @@ class TopicOverviewActivity : AppCompatActivity() {
         val totalQuestions = findViewById<TextView>(R.id.TopicOverviewTotalQuestions)
         val button = findViewById<Button>(R.id.TopicOverviewButton)
 
-        topicText.text = topic
-        descriptionText.text = description
+        topicText.text = getString(R.string.insert_text, topic)
+        descriptionText.text = getString(R.string.insert_text, description)
+        button.text = getString(R.string.insert_text, "Begin")
+
         val questionCount = dataMap?.size.toString()
         if (dataMap != null) {
-            totalQuestions.text = questionCount
+            totalQuestions.text = getString(R.string.total_question, questionCount)
         }
 
         button.setOnClickListener {

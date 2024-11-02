@@ -33,11 +33,12 @@ class AnswerActivity : AppCompatActivity() {
         val choosenText = findViewById<TextView>(R.id.answer)
         val nextBtn = findViewById<Button>(R.id.next)
 
-        correctText.text = "You have " + correctCount + " out of " + count + " correct"
-        choosenText.text = choosenAnswer
+        correctText.text = getString(R.string.correct_total, correctCount.toString(), count)
+        choosenText.text = getString(R.string.your_answer, choosenAnswer)
+        nextBtn.text = getString(R.string.insert_text, "Next")
 
         if(count == curr.toString()) {
-            nextBtn.text = "Finish"
+            nextBtn.text = getString(R.string.insert_text, "Finish")
             nextBtn.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)

@@ -6,30 +6,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".TopicOverviewActivity">
 
     <TextView
         android:id="@+id/TopicOverviewTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Topic" />
+        android:text="@string/insert_text"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TopicOverviewDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Description" />
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:text="@string/insert_text"/>
 
     <TextView
         android:id="@+id/TopicOverviewTotalQuestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Questions: " />
+        android:layout_marginTop="10dp"
+        android:text="@string/total_question"/>
 
     <Button
         android:id="@+id/TopicOverviewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Begin" />
+        android:layout_marginTop="10dp"
+        android:text="@string/insert_text" />
 
 </LinearLayout>

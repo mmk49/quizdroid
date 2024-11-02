@@ -2,7 +2,6 @@ package edu.uw.ischool.mmk49.quizdroid
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -31,12 +30,12 @@ class QuestionActivity : AppCompatActivity() {
         var curr = intent.getIntExtra("CURR", 0)
         var correctCount = intent.getIntExtra("CORRECTCOUNT", 0)
 
-        var question = dataMap?.keys?.elementAtOrNull(curr)
-        var answers = dataMap?.getValue(question)
-        var A1 = answers?.get(0)
-        var A2 = answers?.get(1)
-        var A3 = answers?.get(2)
-        var A4 = answers?.get(3)
+        val question = dataMap?.keys?.elementAtOrNull(curr)
+        val answers = dataMap?.getValue(question)
+        val A1 = answers?.get(0)
+        val A2 = answers?.get(1)
+        val A3 = answers?.get(2)
+        val A4 = answers?.get(3)
 
         val questionText = findViewById<TextView>(R.id.Question)
         val answer1 = findViewById<RadioButton>(R.id.Answer1)
@@ -46,11 +45,12 @@ class QuestionActivity : AppCompatActivity() {
         val submitButton = findViewById<Button>(R.id.submitButton)
         val radioGroup = findViewById<RadioGroup>(R.id.answerGroup)
 
-        questionText.text = question
-        answer1.text = A1
-        answer2.text = A2
-        answer3.text = A3
-        answer4.text = A4
+        questionText.text = getString(R.string.insert_text, question)
+        answer1.text = getString(R.string.insert_text, A1)
+        answer2.text = getString(R.string.insert_text, A2)
+        answer3.text = getString(R.string.insert_text, A3)
+        answer4.text = getString(R.string.insert_text, A4)
+        submitButton.text = getString(R.string.insert_text, "Submit")
 
         var answer = -1
         var choosenAnswer = ""

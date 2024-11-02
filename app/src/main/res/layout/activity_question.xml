@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -12,43 +12,54 @@
         android:id="@+id/Question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question" />
+        android:text="@string/insert_text"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/answerGroup"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <RadioGroup
         android:id="@+id/answerGroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/Answer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Question 1" />
+            android:text="@string/insert_text" />
 
         <RadioButton
             android:id="@+id/Answer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Question 2" />
+            android:text="@string/insert_text" />
 
         <RadioButton
             android:id="@+id/Answer3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Question 3" />
+            android:text="@string/insert_text" />
 
         <RadioButton
             android:id="@+id/Answer4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Question 4" />
+            android:text="@string/insert_text" />
     </RadioGroup>
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/insert_text"
         android:visibility="invisible"
-        android:text="Submit" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answerGroup" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
