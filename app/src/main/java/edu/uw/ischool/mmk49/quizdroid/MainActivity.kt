@@ -2,6 +2,7 @@ package edu.uw.ischool.mmk49.quizdroid
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +10,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import edu.uw.ischool.mmk49.quizdroid.data.MemoryTopicRepository
+import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 
 class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
     lateinit var list: MutableList<TopicModel>
+    private lateinit var topicRepository: MemoryTopicRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,17 @@ class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = TopicAdapter(list, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        topicRepository = MemoryTopicRepository()
+
+        // Access all topics
+        val topics: List<Topic> = topicRepository.getTopics()
+        for (topic in topics) {
+            Log.d("MainActivity", "Topic: ${topic.title}")
+            topic.questions.forEach { question ->
+                Log.d("MainActivity", "Question: ${question.questionText}")
+            }
+        }
     }
 
     override fun onItemClick(position: Int) {
