@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 
 class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,16 +23,19 @@ class QuestionActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val bundle = intent.getBundleExtra("QUESTIONS")
-        val dataMap = bundle?.keySet()?.associateWith { bundle.getStringArrayList(it) }
 
-        val count = intent.getStringExtra("TOTALQUESTIONS")
-        val correctAnswers = intent.getStringArrayListExtra("ANSWERS")
         var curr = intent.getIntExtra("CURR", 0)
         var correctCount = intent.getIntExtra("CORRECTCOUNT", 0)
+        val item = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            intent.getSerializableExtra("TOPICOBJ", Topic::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getSerializableExtra("TOPICOBJ") as? Topic
+        }
 
-        val question = dataMap?.keys?.elementAtOrNull(curr)
-        val answers = dataMap?.getValue(question)
+        val currQuestion = item?.questions?.get(curr)
+
+        val answers = currQuestion?.answers
         val A1 = answers?.get(0)
         val A2 = answers?.get(1)
         val A3 = answers?.get(2)
@@ -45,7 +49,7 @@ class QuestionActivity : AppCompatActivity() {
         val submitButton = findViewById<Button>(R.id.submitButton)
         val radioGroup = findViewById<RadioGroup>(R.id.answerGroup)
 
-        questionText.text = getString(R.string.insert_text, question)
+        questionText.text = getString(R.string.insert_text, currQuestion?.questionText)
         answer1.text = getString(R.string.insert_text, A1)
         answer2.text = getString(R.string.insert_text, A2)
         answer3.text = getString(R.string.insert_text, A3)
@@ -57,38 +61,33 @@ class QuestionActivity : AppCompatActivity() {
         radioGroup.setOnCheckedChangeListener { _, checkedID ->
             when(checkedID) {
                 answer1.id -> {
-                    answer = 1
+                    answer = 0
                     choosenAnswer = (answer1.text as String?).toString()
                 }
                 answer2.id -> {
-                    answer = 2
+                    answer = 1
                     choosenAnswer = (answer2.text as String?).toString()
                 }
                 answer3.id -> {
-                    answer = 3
+                    answer = 2
                     choosenAnswer = (answer3.text as String?).toString()
                 }
                 answer4.id -> {
-                    answer = 4
+                    answer = 3
                     choosenAnswer = (answer4.text as String?).toString()
                 }
             }
             submitButton.isVisible = true
         }
         submitButton.setOnClickListener {
-            if(answer.toString() == (correctAnswers?.get(curr) ?: "-1")) {
+            if(answer == currQuestion?.correctAnswer) {
                 correctCount++
 
             }
             curr++
-            val bundle = Bundle()
-            dataMap?.forEach { (key, value) ->
-                bundle.putStringArrayList(key, value)
-            }
+
             val intent = Intent(this, AnswerActivity::class.java)
-            intent.putExtra("QUESTIONS", bundle)
-            intent.putExtra("TOTALQUESTIONS", count)
-            intent.putStringArrayListExtra("ANSWERS", correctAnswers)
+            intent.putExtra("TOPICOBJ", item)
             intent.putExtra("CURR", curr)
             intent.putExtra("CORRECTCOUNT", correctCount)
             intent.putExtra("CHOOSENANSWER", choosenAnswer)

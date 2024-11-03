@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 
-class TopicAdapter (var topics: List<TopicModel>, var listener: RecyclerViewEvent) : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
+class TopicAdapter (var topics: List<Topic>, var listener: RecyclerViewEvent) : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
     inner class TopicViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val topicTextView: TextView = itemView.findViewById(R.id.topicTitle)
+        val descTextView: TextView = itemView.findViewById(R.id.shortDesc)
         init {
             itemView.setOnClickListener(this)
         }
@@ -26,8 +28,9 @@ class TopicAdapter (var topics: List<TopicModel>, var listener: RecyclerViewEven
     }
 
     override fun onBindViewHolder(holder: TopicViewHolder, position: Int) {
-        val topic : TopicModel = topics[position]
-        holder.topicTextView.text = topic.topic
+        val topic : Topic = topics[position]
+        holder.topicTextView.text = topic.title
+        holder.descTextView.text = topic.shortDescription
     }
 
     override fun getItemCount(): Int {

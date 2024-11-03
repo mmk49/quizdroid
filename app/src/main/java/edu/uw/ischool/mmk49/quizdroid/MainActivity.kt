@@ -14,8 +14,9 @@ import edu.uw.ischool.mmk49.quizdroid.data.MemoryTopicRepository
 import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 
 class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
-    lateinit var list: MutableList<TopicModel>
+    //lateinit var list: MutableList<TopicModel>
     private lateinit var topicRepository: MemoryTopicRepository
+    private lateinit var topicList: List<Topic>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,44 +27,36 @@ class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val topicsArray = resources.getStringArray(R.array.topicsArray)
-        val descriptorArray = resources.getStringArray(R.array.descriptorArray)
-        val questionMap = mapOf("what is 1+1?" to arrayListOf("2", "4", "99", "10000"), "what is 2+1?" to arrayListOf("3", "422", "76", "10"))
-        val answerList = arrayListOf("1", "1")
+        //val topicsArray = resources.getStringArray(R.array.topicsArray)
+        //val descriptorArray = resources.getStringArray(R.array.descriptorArray)
+        //val questionMap = mapOf("what is 1+1?" to arrayListOf("2", "4", "99", "10000"), "what is 2+1?" to arrayListOf("3", "422", "76", "10"))
+        //val answerList = arrayListOf("1", "1")
 
-        val bundle = Bundle()
-        questionMap.forEach { (key, value) ->
-            bundle.putStringArrayList(key, value)
-        }
-        list = mutableListOf()
-        for(index in topicsArray.indices) {
-            list.add(TopicModel(topicsArray[index], descriptorArray[index], bundle, answerList))
-        }
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        recyclerView.adapter = TopicAdapter(list, this)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
+        //val bundle = Bundle()
+        //questionMap.forEach { (key, value) ->
+            //bundle.putStringArrayList(key, value)
+        //}
+        //list = mutableListOf()
+        //for(index in topicsArray.indices) {
+            //list.add(TopicModel(topicsArray[index], descriptorArray[index], bundle, answerList))
+        //}
+        // Initialize the repository
         topicRepository = MemoryTopicRepository()
 
-        // Access all topics
-        val topics: List<Topic> = topicRepository.getTopics()
-        for (topic in topics) {
-            Log.d("MainActivity", "Topic: ${topic.title}")
-            topic.questions.forEach { question ->
-                Log.d("MainActivity", "Question: ${question.questionText}")
-            }
-        }
+        // Retrieve topics from the repository
+        topicList = topicRepository.getTopics()
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.adapter = TopicAdapter(topicList, this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
     }
 
     override fun onItemClick(position: Int) {
         val curr = 0
         val correctCount = 0
-        val item = list[position]
+        val item = topicList[position]
         val intent = Intent(this, TopicOverviewActivity::class.java)
-        intent.putExtra("TOPIC", item.topic)
-        intent.putExtra("DESCRIPTION", item.description)
-        intent.putExtra("QUESTIONS", item.questions)
-        intent.putStringArrayListExtra("ANSWERS", item.answers)
+        intent.putExtra("TOPICOBJ", item)
         intent.putExtra("CURR", curr)
         intent.putExtra("CORRECTCOUNT", correctCount)
         startActivity(intent)

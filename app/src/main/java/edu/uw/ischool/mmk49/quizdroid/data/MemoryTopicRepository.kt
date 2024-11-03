@@ -20,6 +20,23 @@ class MemoryTopicRepository: TopicRepository {
                     answers = listOf("3", "1", "12", "69"),
                     correctAnswer = 0
                 )
+            ),
+        ),
+        Topic(
+            title = "Algebra",
+            shortDescription = "I love math",
+            longDescription = "I love math so much so I wrote a longer description",
+            questions = listOf(
+                Question(
+                    questionText = "What is 1+1?",
+                    answers = listOf("4", "99", "2173", "10000"),
+                    correctAnswer = 0
+                ),
+                Question(
+                    questionText = "What is 2+1?",
+                    answers = listOf("3", "1", "12", "69"),
+                    correctAnswer = 0
+                )
             )
         )
     )
