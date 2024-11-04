@@ -15,8 +15,10 @@ import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 
 class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
     //lateinit var list: MutableList<TopicModel>
-    private lateinit var topicRepository: MemoryTopicRepository
-    private lateinit var topicList: List<Topic>
+//    private lateinit var topicRepository: MemoryTopicRepository
+//    private lateinit var topicList: List<Topic>
+    private val topicRepository = QuizApp()
+    private val topicList = topicRepository.topicRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +43,10 @@ class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
             //list.add(TopicModel(topicsArray[index], descriptorArray[index], bundle, answerList))
         //}
         // Initialize the repository
-        topicRepository = MemoryTopicRepository()
+        //topicRepository = MemoryTopicRepository()
 
         // Retrieve topics from the repository
-        topicList = topicRepository.getTopics()
+        //topicList = topicRepository.getTopics()
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = TopicAdapter(topicList, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
