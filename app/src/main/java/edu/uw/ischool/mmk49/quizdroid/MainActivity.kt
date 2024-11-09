@@ -14,11 +14,7 @@ import edu.uw.ischool.mmk49.quizdroid.data.MemoryTopicRepository
 import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 
 class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
-    //lateinit var list: MutableList<TopicModel>
-//    private lateinit var topicRepository: MemoryTopicRepository
-//    private lateinit var topicList: List<Topic>
-    private val topicRepository = QuizApp()
-    private val topicList = topicRepository.topicRepository
+    private lateinit var topicList: List<Topic>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,24 +25,8 @@ class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //val topicsArray = resources.getStringArray(R.array.topicsArray)
-        //val descriptorArray = resources.getStringArray(R.array.descriptorArray)
-        //val questionMap = mapOf("what is 1+1?" to arrayListOf("2", "4", "99", "10000"), "what is 2+1?" to arrayListOf("3", "422", "76", "10"))
-        //val answerList = arrayListOf("1", "1")
-
-        //val bundle = Bundle()
-        //questionMap.forEach { (key, value) ->
-            //bundle.putStringArrayList(key, value)
-        //}
-        //list = mutableListOf()
-        //for(index in topicsArray.indices) {
-            //list.add(TopicModel(topicsArray[index], descriptorArray[index], bundle, answerList))
-        //}
-        // Initialize the repository
-        //topicRepository = MemoryTopicRepository()
-
-        // Retrieve topics from the repository
-        //topicList = topicRepository.getTopics()
+        val topicRepository = (application as QuizApp).topicRepository
+        topicList = topicRepository.getTopics()
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = TopicAdapter(topicList, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
