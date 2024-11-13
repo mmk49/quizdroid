@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Math",
+    "desc": "Basic math concepts",
+    "questions": [
+      {
+        "text": "What is the square root of 9?",
+        "answer": "1",
+        "answers": [
+          "3",
+          "9",
+          "1.5",
+          "81"
+        ]
+      },
+      {
+        "text": "What is the value of pi (π) approximately?",
+        "answer": "2",
+        "answers": [
+          "2.14",
+          "3.14",
+          "3.41",
+          "4.13"
+        ]
+      },
+      {
+        "text": "What is 5 * 5?",
+        "answer": "1",
+        "answers": [
+          "25",
+          "10",
+          "15",
+          "20"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Biology",
+    "desc": "Exploring life sciences",
+    "questions": [
+      {
+        "text": "What is the powerhouse of the cell?",
+        "answer": "1",
+        "answers": [
+          "Mitochondria",
+          "Nucleus",
+          "Chloroplast",
+          "Ribosome"
+        ]
+      },
+      {
+        "text": "Which gas do plants absorb for photosynthesis?",
+        "answer": "2",
+        "answers": [
+          "Oxygen",
+          "Carbon dioxide",
+          "Nitrogen",
+          "Hydrogen"
+        ]
+      },
+      {
+        "text": "What type of blood cells fight infection?",
+        "answer": "2",
+        "answers": [
+          "Red blood cells",
+          "White blood cells",
+          "Platelets",
+          "Plasma"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "History",
+    "desc": "Uncovering the past",
+    "questions": [
+      {
+        "text": "Who was the first President of the United States?",
+        "answer": "1",
+        "answers": [
+          "George Washington",
+          "Abraham Lincoln",
+          "Thomas Jefferson",
+          "John Adams"
+        ]
+      },
+      {
+        "text": "In which year did World War II end?",
+        "answer": "3",
+        "answers": [
+          "1918",
+          "1939",
+          "1945",
+          "1965"
+        ]
+      },
+      {
+        "text": "What ancient civilization built the pyramids?",
+        "answer": "1",
+        "answers": [
+          "Egyptian",
+          "Roman",
+          "Greek",
+          "Mayan"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "English",
+    "desc": "Grammar and literature basics",
+    "questions": [
+      {
+        "text": "Which of these is a synonym for 'happy'?",
+        "answer": "2",
+        "answers": [
+          "Sad",
+          "Joyful",
+          "Angry",
+          "Lonely"
+        ]
+      },
+      {
+        "text": "What is the main theme of a story called?",
+        "answer": "3",
+        "answers": [
+          "Character",
+          "Setting",
+          "Plot",
+          "Symbol"
+        ]
+      },
+      {
+        "text": "Which of these is a noun?",
+        "answer": "1",
+        "answers": [
+          "Dog",
+          "Quickly",
+          "Blue",
+          "Run"
+        ]
+      }
+    ]
+  }
+]

@@ -10,4 +10,5 @@ class QuizApp : android.app.Application() {
         topicRepository = MemoryTopicRepository(this)
         Log.i("QuizApp Working", "TRUE")
     }
+
 }

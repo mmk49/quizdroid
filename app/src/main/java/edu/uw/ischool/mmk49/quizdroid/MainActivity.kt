@@ -3,9 +3,13 @@ package edu.uw.ischool.mmk49.quizdroid
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,12 +29,30 @@ class MainActivity : AppCompatActivity(), TopicAdapter.RecyclerViewEvent {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        setSupportActionBar(findViewById(R.id.my_toolbar))
         val topicRepository = (application as QuizApp).topicRepository
         topicList = topicRepository.getTopics()
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = TopicAdapter(topicList, this)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.items, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when(item.itemId) {
+        R.id.action_favorite -> {
+            val intent = Intent(this, Settings::class.java)
+            intent.putExtra("DOWNLOADING", false)
+            startActivity(intent)
+            true
+        } else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onItemClick(position: Int) {

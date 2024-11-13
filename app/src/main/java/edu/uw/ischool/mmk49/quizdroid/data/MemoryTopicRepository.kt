@@ -5,7 +5,6 @@ import edu.uw.ischool.mmk49.quizdroid.R
 import edu.uw.ischool.mmk49.quizdroid.domain.Question
 import edu.uw.ischool.mmk49.quizdroid.domain.Topic
 import org.json.JSONArray
-import org.json.JSONObject
 
 class MemoryTopicRepository(context: Context): TopicRepository {
     private val topics: List<Topic> = createTopics(context)
@@ -58,7 +57,6 @@ class MemoryTopicRepository(context: Context): TopicRepository {
             val description = topicJson.getString("desc")
             val questionsJsonArray = topicJson.getJSONArray("questions")
 
-            // Parse questions
             val questions = mutableListOf<Question>()
             for (j in 0 until questionsJsonArray.length()) {
                 val questionJson = questionsJsonArray.getJSONObject(j)
